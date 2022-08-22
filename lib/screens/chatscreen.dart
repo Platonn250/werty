@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:dateapp/constants/constwidgets.dart';
+import 'package:dateapp/pages/chatpage.dart';
 import 'package:flutter/material.dart';
 
 class ChatScreen extends StatelessWidget {
@@ -123,53 +124,62 @@ class ChatScreen extends StatelessWidget {
                           return Padding(
                             padding: EdgeInsets.symmetric(
                                 horizontal: 20, vertical: 8.0),
-                            child: Container(
-                              height: 56,
-                              width: 353,
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(12),
-                              ),
-                              child: Center(
-                                child: ListTile(
-                                  trailing: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.end,
-                                      children: [
-                                        Text(
-                                          "Date time",
-                                          style: TextStyle(
-                                            fontSize: 14,
-                                            color: Color.fromRGBO(0, 0, 0, 0.6),
+                            child: GestureDetector(
+                              onTap: () {
+                                Navigator.push(context,
+                                    MaterialPageRoute(builder: (context) {
+                                  return ChatPage();
+                                }));
+                              },
+                              child: Container(
+                                height: 56,
+                                width: 353,
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(12),
+                                ),
+                                child: Center(
+                                  child: ListTile(
+                                    trailing: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.end,
+                                        children: [
+                                          Text(
+                                            "Date time",
+                                            style: TextStyle(
+                                              fontSize: 14,
+                                              color:
+                                                  Color.fromRGBO(0, 0, 0, 0.6),
+                                            ),
                                           ),
+                                          CircleAvatar(
+                                            radius: 10,
+                                          )
+                                        ]),
+                                    // leading: CircleAvatar(),
+                                    leading: ClipRRect(
+                                      borderRadius: BorderRadius.circular(50),
+                                      child: Container(
+                                        height: 38,
+                                        width: 38,
+                                        decoration: BoxDecoration(
+                                          color: Colors.blue,
                                         ),
-                                        CircleAvatar(
-                                          radius: 10,
-                                        )
-                                      ]),
-                                  // leading: CircleAvatar(),
-                                  leading: ClipRRect(
-                                    borderRadius: BorderRadius.circular(50),
-                                    child: Container(
-                                      height: 38,
-                                      width: 38,
-                                      decoration: BoxDecoration(
-                                        color: Colors.blue,
-                                      ),
-                                      child: Image.network(
-                                        images[index],
-                                        fit: BoxFit.fill,
+                                        child: Image.network(
+                                          images[index],
+                                          fit: BoxFit.fill,
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                  title: Text(
-                                    names[index],
-                                    style: TextStyle(fontSize: 18),
-                                  ),
-                                  subtitle: Text(
-                                    messages[index],
-                                    style: TextStyle(
-                                      fontSize: 12,
+                                    title: Text(
+                                      names[index],
+                                      style: TextStyle(fontSize: 18),
+                                    ),
+                                    subtitle: Text(
+                                      messages[index],
+                                      style: TextStyle(
+                                        fontSize: 12,
+                                      ),
                                     ),
                                   ),
                                 ),
