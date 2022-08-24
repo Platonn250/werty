@@ -12,6 +12,8 @@ class Loginpage extends StatefulWidget {
     required this.showRegisterPage,
   }) : super(key: key);
 
+  final id = 'loginScreen';
+
   @override
   State<Loginpage> createState() => _LoginpageState();
 }

@@ -1,10 +1,12 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+import 'package:dateapp/pages/categories.dart';
 import 'package:dateapp/pages/home.dart';
 import 'package:flutter/material.dart';
 
 class AccountType extends StatelessWidget {
   const AccountType({Key? key}) : super(key: key);
+  final id = 'accounttype';
 
   @override
   Widget build(BuildContext context) {
@@ -142,9 +144,10 @@ class AccountType extends StatelessWidget {
               }),
               child: GestureDetector(
                 onTap: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) {
-                    return HomeView();
-                  }));
+                  // Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  //   return HomeView();
+                  // }));
+                  Navigator.pushNamed(context, CategoriesPage().id);
                 },
                 child: Container(
                   decoration: BoxDecoration(

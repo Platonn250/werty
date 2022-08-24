@@ -4,9 +4,21 @@ import 'package:flutter/material.dart';
 
 class OrderScreen extends StatelessWidget {
   const OrderScreen({Key? key}) : super(key: key);
+  final id = 'orderscreen';
 
   @override
   Widget build(BuildContext context) {
+    final clothings = [
+      'https://images.unsplash.com/photo-1610897600804-c36e2336ad3a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8am9yZGFuJTIwNHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60',
+      'https://images.unsplash.com/photo-1618354691373-d851c5c3a990?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8YmxhY2slMjB0JTIwc2hpcnR8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60',
+      'https://images.unsplash.com/photo-1529810313688-44ea1c2d81d3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTV8fGRpb3IlMjBzaG9lc3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60',
+    ];
+
+    final names = [
+      'Air Jordan',
+      "BLack T-Shirt",
+      'Dior',
+    ];
     return SafeArea(
         child: Column(
       children: [
@@ -98,59 +110,53 @@ class OrderScreen extends StatelessWidget {
                   child: ListView.builder(
                       itemCount: 3,
                       itemBuilder: (context, index) {
-                        return Padding(
-                          padding: EdgeInsets.symmetric(
-                              horizontal: 20, vertical: 8.0),
-                          child: Container(
-                            height: 56,
-                            width: 353,
-                            decoration: BoxDecoration(
-                              boxShadow: [
-                                BoxShadow(
-                                  // color: Colors.white30,
-                                  color: Color.fromARGB(255, 95, 126, 154),
-                                  offset: Offset(3.0, 3.0),
-                                  blurRadius: 2,
-                                  spreadRadius: 0.1,
-                                ),
-                                BoxShadow(
-                                  // color: Colors.white30,
-                                  // color: Color.fromARGB(255, 95
-                                  color: Color.fromARGB(255, 95, 126, 154),
-                                  offset: Offset(-3.0, -3.0),
-                                  blurRadius: 2,
-                                  spreadRadius: 0.1,
-                                ),
-                              ],
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(12),
-                            ),
-                            child: Center(
-                              child: ListTile(
-                                trailing: Image.asset("lib/images/next.png"),
-                                leading: CircleAvatar(),
-                                // leading: Container(
-                                //   height: 32,
-                                //   width: 32,
-                                //   decoration: BoxDecoration(
-                                //     color: Colors.blue,
-                                //     borderRadius: BorderRadius.circular(50),
-                                //   ),
-                                // ),
-                                title: Text(
-                                  "Air Jordan",
-                                  style: TextStyle(fontSize: 18),
-                                ),
-                                subtitle: Text(
-                                  "Today, Nov 17 6:17",
-                                  style: TextStyle(
-                                    fontSize: 12,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
+                        return MyTile(
+                          title: names[index],
+                          imgUrl: clothings[index],
                         );
+                        // return Padding(
+                        //   padding: EdgeInsets.symmetric(
+                        //       horizontal: 20, vertical: 8.0),
+                        //   child: Container(
+                        //     height: 56,
+                        //     width: 353,
+                        //     decoration: BoxDecoration(
+                        //         color: Colors.white,
+                        //         borderRadius: BorderRadius.circular(12),
+                        //         boxShadow: [
+                        //           BoxShadow(
+                        //             blurRadius: 10,
+                        //             offset: Offset(0, 3),
+                        //             color: Colors.grey.withOpacity(0.4),
+                        //           )
+                        //         ]),
+                        //     child: Center(
+                        //       child: ListTile(
+                        //         trailing: Icon(Icons.navigate_next_outlined),
+                        //         // leading: CircleAvatar(),
+                        //         leading: ClipRRect(
+                        //           borderRadius: BorderRadius.circular(50),
+                        //           child: Container(
+                        //             height: 38,
+                        //             width: 38,
+                        //             decoration: BoxDecoration(
+                        //               color: Colors.blue,
+                        //             ),
+                        //             child: Image.network(
+                        //               clothings[index],
+                        //               fit: BoxFit.fill,
+                        //             ),
+                        //           ),
+                        //         ),
+                        //         title: Text(
+                        //           names[index],
+                        //           style: TextStyle(fontSize: 18),
+                        //         ),
+                        //         subtitle: Text("Today, Nov 17  6:17"),
+                        //       ),
+                        //     ),
+                        //   ),
+                        // );
                       }),
                 )
               ],
@@ -159,5 +165,64 @@ class OrderScreen extends StatelessWidget {
         )
       ],
     ));
+  }
+}
+
+class MySubTitle extends StatelessWidget {
+  const MySubTitle({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Text(
+          "Today, Aug 17 6:17",
+          style: TextStyle(fontSize: 11, fontWeight: FontWeight.w700),
+        ),
+      ],
+    );
+  }
+}
+
+class MyTile extends StatelessWidget {
+  final imgUrl;
+  final String title;
+  const MyTile({Key? key, this.imgUrl, required this.title}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+      child: Container(
+        decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(12),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.withOpacity(0.5),
+                blurRadius: 10,
+                offset: Offset(0, 3),
+              ),
+            ]),
+        child: ListTile(
+          leading: ClipRRect(
+            borderRadius: BorderRadius.circular(15),
+            child: Container(
+              height: 52,
+              width: 52,
+              decoration: BoxDecoration(
+                color: Colors.red,
+              ),
+              child: Image.network(
+                imgUrl,
+                fit: BoxFit.fill,
+              ),
+            ),
+          ),
+          title: Text(title),
+          subtitle: MySubTitle(),
+        ),
+      ),
+    );
   }
 }

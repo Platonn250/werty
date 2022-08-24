@@ -1,7 +1,5 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
-import 'dart:ffi';
-
 import 'package:dateapp/constants/constwidgets.dart';
 import 'package:dateapp/screens/chatscreen.dart';
 import 'package:dateapp/screens/homescreen.dart';
@@ -12,6 +10,7 @@ import 'package:flutter/material.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({Key? key}) : super(key: key);
+  final id = 'home';
 
   @override
   State<HomeView> createState() => _HomeViewState();

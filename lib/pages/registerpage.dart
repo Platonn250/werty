@@ -11,6 +11,8 @@ class RegisterPage extends StatefulWidget {
     required this.showLoginPage,
   }) : super(key: key);
 
+  final id = 'registerpage';
+
   @override
   State<RegisterPage> createState() => _RegisterPageState();
 }
@@ -239,9 +241,10 @@ class _RegisterPageState extends State<RegisterPage> {
               padding: const EdgeInsets.symmetric(horizontal: 25),
               child: GestureDetector(
                 onTap: (() {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) {
-                    return HomeView();
-                  }));
+                  // Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  //   return HomeView();
+                  // }));
+                  Navigator.pushNamed(context, AccountType().id);
                 }),
                 child: Container(
                   decoration: BoxDecoration(

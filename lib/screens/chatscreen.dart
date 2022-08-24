@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 
 class ChatScreen extends StatelessWidget {
   const ChatScreen({Key? key}) : super(key: key);
+  final id = 'chat_screen';
 
   @override
   Widget build(BuildContext context) {
@@ -121,71 +122,75 @@ class ChatScreen extends StatelessWidget {
                     child: ListView.builder(
                         itemCount: 3,
                         itemBuilder: (context, index) {
-                          return Padding(
-                            padding: EdgeInsets.symmetric(
-                                horizontal: 20, vertical: 8.0),
-                            child: GestureDetector(
-                              onTap: () {
-                                Navigator.push(context,
-                                    MaterialPageRoute(builder: (context) {
-                                  return ChatPage();
-                                }));
-                              },
-                              child: Container(
-                                height: 56,
-                                width: 353,
-                                decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(12),
-                                ),
-                                child: Center(
-                                  child: ListTile(
-                                    trailing: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.end,
-                                        children: [
-                                          Text(
-                                            "Date time",
-                                            style: TextStyle(
-                                              fontSize: 14,
-                                              color:
-                                                  Color.fromRGBO(0, 0, 0, 0.6),
-                                            ),
-                                          ),
-                                          CircleAvatar(
-                                            radius: 10,
-                                          )
-                                        ]),
-                                    // leading: CircleAvatar(),
-                                    leading: ClipRRect(
-                                      borderRadius: BorderRadius.circular(50),
-                                      child: Container(
-                                        height: 38,
-                                        width: 38,
-                                        decoration: BoxDecoration(
-                                          color: Colors.blue,
-                                        ),
-                                        child: Image.network(
-                                          images[index],
-                                          fit: BoxFit.fill,
-                                        ),
-                                      ),
-                                    ),
-                                    title: Text(
-                                      names[index],
-                                      style: TextStyle(fontSize: 18),
-                                    ),
-                                    subtitle: Text(
-                                      messages[index],
-                                      style: TextStyle(
-                                        fontSize: 12,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
+                          return MyTile(
+                            title: names[index],
+                            imgUrl: images[index],
                           );
+                          // return Padding(
+                          //   padding: EdgeInsets.symmetric(
+                          //       horizontal: 20, vertical: 8.0),
+                          //   child: GestureDetector(
+                          //     onTap: () {
+                          //       Navigator.push(context,
+                          //           MaterialPageRoute(builder: (context) {
+                          //         return ChatPage();
+                          //       }));
+                          //     },
+                          //     child: Container(
+                          //       height: 56,
+                          //       width: 353,
+                          //       decoration: BoxDecoration(
+                          //         color: Colors.greenAccent,
+                          //         borderRadius: BorderRadius.circular(12),
+                          //       ),
+                          //       child: Center(
+                          //         child: ListTile(
+                          //           trailing: Column(
+                          //               crossAxisAlignment:
+                          //                   CrossAxisAlignment.end,
+                          //               children: [
+                          //                 Text(
+                          //                   "Date time",
+                          //                   style: TextStyle(
+                          //                     fontSize: 14,
+                          //                     color:
+                          //                         Color.fromRGBO(0, 0, 0, 0.6),
+                          //                   ),
+                          //                 ),
+                          //                 CircleAvatar(
+                          //                   radius: 10,
+                          //                 )
+                          //               ]),
+                          //           // leading: CircleAvatar(),
+                          //           leading: ClipRRect(
+                          //             borderRadius: BorderRadius.circular(50),
+                          //             child: Container(
+                          //               height: 38,
+                          //               width: 38,
+                          //               decoration: BoxDecoration(
+                          //                 color: Colors.blue,
+                          //               ),
+                          //               child: Image.network(
+                          //                 images[index],
+                          //                 fit: BoxFit.fill,
+                          //               ),
+                          //             ),
+                          //           ),
+                          //           title: Text(
+                          //             names[index],
+                          //             style: TextStyle(fontSize: 18),
+                          //           ),
+                          //           subtitle: Text(
+                          //             messages[index],
+                          //             style: TextStyle(
+                          //               fontSize: 12,
+                          //             ),
+                          //           ),
+                          //         ),
+                          //       ),
+                          //     ),
+                          //   ),
+                          // );
                         }),
                   )
                 ],
@@ -193,6 +198,85 @@ class ChatScreen extends StatelessWidget {
             ),
           )
         ],
+      ),
+    );
+  }
+}
+
+class MySubTitle extends StatelessWidget {
+  const MySubTitle({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Text(
+          "Today, Aug 17 6:17",
+          style: TextStyle(fontSize: 11, fontWeight: FontWeight.w700),
+        ),
+      ],
+    );
+  }
+}
+
+class MyTile extends StatelessWidget {
+  final imgUrl;
+  final String title;
+  const MyTile({Key? key, this.imgUrl, required this.title}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+      child: Container(
+        decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(12),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.withOpacity(0.5),
+                blurRadius: 10,
+                offset: Offset(0, 3),
+              ),
+            ]),
+        child: ListTile(
+          leading: ClipRRect(
+            borderRadius: BorderRadius.circular(50),
+            child: Container(
+              height: 52,
+              width: 52,
+              decoration: BoxDecoration(
+                color: Colors.red,
+              ),
+              child: Image.network(
+                imgUrl,
+                fit: BoxFit.fill,
+              ),
+            ),
+          ),
+          trailing: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                Text(
+                  "Date time",
+                  style: TextStyle(
+                    fontSize: 14,
+                    color: Color.fromRGBO(0, 0, 0, 0.6),
+                  ),
+                ),
+                CircleAvatar(
+                  radius: 10,
+                  backgroundColor: Colors.deepPurple.withOpacity(0.8),
+                  child: Text(
+                    "0",
+                    style: TextStyle(fontSize: 12),
+                  ),
+                )
+              ]),
+          title: Text(title),
+          subtitle: MySubTitle(),
+        ),
       ),
     );
   }

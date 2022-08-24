@@ -34,39 +34,42 @@ class HomeScreen extends StatelessWidget {
     return SafeArea(
       child: Column(
         children: [
-          Container(
-            height: 72,
-            // color: Colors.blue,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                CircleAvatar(
-                  backgroundImage: NetworkImage(
-                      "https://media.istockphoto.com/photos/happy-millennial-afro-american-business-woman-posing-isolated-on-picture-id1386479313?b=1&k=20&m=1386479313&s=170667a&w=0&h=axEYGqmMKgDx8nk47CRAuGc27P1mnEu3zDJCdK7WlsE="),
-                  // child: Image.asset("lib/images/man.jpg"),
-                ),
-                Row(
-                  children: [
-                    Icon(Icons.place),
-                    Text(
-                      "NY City, st 398",
-                      style: TextStyle(
-                        color: Color.fromRGBO(0, 0, 0, 0.6),
-                        fontSize: 20,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    )
-                  ],
-                ),
-                Image.asset("lib/images/icon.png")
-              ],
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10),
+            child: Container(
+              height: 72,
+              // color: Colors.blue,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  CircleAvatar(
+                    backgroundImage: NetworkImage(
+                        "https://media.istockphoto.com/photos/happy-millennial-afro-american-business-woman-posing-isolated-on-picture-id1386479313?b=1&k=20&m=1386479313&s=170667a&w=0&h=axEYGqmMKgDx8nk47CRAuGc27P1mnEu3zDJCdK7WlsE="),
+                    // child: Image.asset("lib/images/man.jpg"),
+                  ),
+                  Row(
+                    children: [
+                      Icon(Icons.place),
+                      Text(
+                        "NY City, st 398",
+                        style: TextStyle(
+                          color: Color.fromRGBO(0, 0, 0, 0.6),
+                          fontSize: 20,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      )
+                    ],
+                  ),
+                  Image.asset("lib/images/icon.png")
+                ],
+              ),
             ),
           ),
           SizedBox(
             height: 10,
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
+            padding: const EdgeInsets.symmetric(horizontal: 10),
             child: Container(
               height: 58,
               decoration: BoxDecoration(
@@ -96,7 +99,7 @@ class HomeScreen extends StatelessWidget {
             height: 30,
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
+            padding: const EdgeInsets.symmetric(horizontal: 10),
             child: Align(
               alignment: Alignment.bottomLeft,
               child: Text(
@@ -174,7 +177,7 @@ class HomeScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20),
+                      padding: const EdgeInsets.symmetric(horizontal: 10),
                       child: Row(
                         children: [
                           Text(
@@ -189,7 +192,7 @@ class HomeScreen extends StatelessWidget {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20),
+                      padding: const EdgeInsets.symmetric(horizontal: 10),
                       child: Row(
                         children: [
                           Text(

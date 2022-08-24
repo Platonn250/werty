@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+import 'package:dateapp/constants/ownmessages.dart';
 import 'package:flutter/material.dart';
 
 class ChatPage extends StatelessWidget {
@@ -31,36 +32,44 @@ class ChatPage extends StatelessWidget {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
-          Container(
-              child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          Expanded(
+            child: ListView(
               children: [
-                Image.asset("lib/images/paper.png"),
-                Container(
-                  height: 47,
-                  width: 336,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(30),
-                    color: Color.fromRGBO(243, 241, 241, 1),
-                  ),
-                  child: Center(
-                    child: TextField(
-                      decoration: InputDecoration(
-                        border: InputBorder.none,
-                        prefixIcon: GestureDetector(
-                          child: Icon(Icons.face),
-                          onTap: () {},
-                        ),
-                        suffixIcon: Icon(Icons.telegram_outlined),
-                      ),
-                    ),
-                  ),
-                )
+                OwnMessageCard(),
               ],
             ),
-          ))
+          ),
+          Container(
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Image.asset("lib/images/paper.png"),
+                  Container(
+                    height: 47,
+                    width: 336,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(30),
+                      color: Color.fromRGBO(243, 241, 241, 1),
+                    ),
+                    child: Center(
+                      child: TextField(
+                        decoration: InputDecoration(
+                          border: InputBorder.none,
+                          prefixIcon: GestureDetector(
+                            child: Icon(Icons.face),
+                            onTap: () {},
+                          ),
+                          suffixIcon: Icon(Icons.telegram_outlined),
+                        ),
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            ),
+          ),
         ],
       ),
     );
