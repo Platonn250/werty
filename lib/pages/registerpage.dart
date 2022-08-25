@@ -1,7 +1,9 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, use_build_context_synchronously
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dateapp/pages/choose_a_t_page.dart';
 import 'package:dateapp/pages/home.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class RegisterPage extends StatefulWidget {
@@ -18,6 +20,53 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
+  final _comfirmPassController = TextEditingController();
+  final _nameController = TextEditingController();
+  final _auth = FirebaseAuth.instance;
+  final _database = FirebaseFirestore.instance;
+
+  Future signUp() async {
+    try {
+      await _auth.createUserWithEmailAndPassword(
+          email: _emailController.text.trim(),
+          password: _passwordController.text.trim());
+      addToDb();
+      Navigator.pushNamed(context, HomeView().id);
+    } catch (e) {
+      print(e.toString());
+    }
+  }
+
+  Future addToDb() async {
+    try {
+      if (_passwordController.text == _comfirmPassController.text) {
+        await _database
+            .collection("users")
+            .doc(_nameController.text.trim())
+            .set({
+          'name': _nameController.text.trim(),
+          'email': _emailController.text.trim(),
+        });
+      } else if (_nameController.text.trim().length < 5) {
+        print("Username mut be 5 chars long");
+      } else {
+        print("Passwords do not match!");
+      }
+      // await _database.collection('users').doc().add(
+      //   {
+      //     'name': _nameController.text.trim(),
+      //     'email': _emailController.text.trim(),
+      //   },
+      // );
+
+      // print("Aded ${{_auth.currentUser!.email}} successfully");
+    } catch (e) {
+      print(e.toString());
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -156,6 +205,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 8),
                   child: TextField(
+                    controller: _emailController,
                     decoration: InputDecoration(
                       hintText: "Email",
                       prefixIcon: Icon(Icons.mail),
@@ -179,8 +229,9 @@ class _RegisterPageState extends State<RegisterPage> {
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 8),
                   child: TextField(
+                    controller: _nameController,
                     decoration: InputDecoration(
-                      hintText: "Name",
+                      hintText: "Username",
                       prefixIcon: Icon(Icons.lock),
                       border: InputBorder.none,
                     ),
@@ -202,6 +253,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 8),
                   child: TextField(
+                    controller: _passwordController,
                     decoration: InputDecoration(
                       hintText: "Password",
                       prefixIcon: Icon(Icons.mail),
@@ -225,6 +277,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 8),
                   child: TextField(
+                    controller: _comfirmPassController,
                     decoration: InputDecoration(
                       hintText: "Comfirm Pasword",
                       prefixIcon: Icon(Icons.mail),
@@ -246,22 +299,25 @@ class _RegisterPageState extends State<RegisterPage> {
                   // }));
                   Navigator.pushNamed(context, AccountType().id);
                 }),
-                child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: Color.fromRGBO(46, 80, 112, 1),
-                  ),
-                  height: 49,
-                  width: MediaQuery.of(context).size.width,
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 8),
-                    child: Center(
-                      child: Text(
-                        "Register",
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 18,
-                            fontWeight: FontWeight.w500),
+                child: GestureDetector(
+                  onTap: signUp,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: Color.fromRGBO(46, 80, 112, 1),
+                    ),
+                    height: 49,
+                    width: MediaQuery.of(context).size.width,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 8),
+                      child: Center(
+                        child: Text(
+                          "Register",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 18,
+                              fontWeight: FontWeight.w500),
+                        ),
                       ),
                     ),
                   ),

@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:dateapp/firebase_options.dart';
 import 'package:dateapp/pages/businesstyppage.dart';
 import 'package:dateapp/pages/categories.dart';
 import 'package:dateapp/pages/choose_a_t_page.dart';
@@ -9,9 +10,14 @@ import 'package:dateapp/pages/loginpage.dart';
 import 'package:dateapp/pages/registerpage.dart';
 import 'package:dateapp/screens/chatscreen.dart';
 import 'package:dateapp/screens/orderscreen.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const MyApp());
 }
 

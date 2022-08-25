@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1058590959649",
+    "project_id": "dateapp-7e7fe",
+    "storage_bucket": "dateapp-7e7fe.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1058590959649:android:272ceb8b7126a5b8811b60",
+        "android_client_info": {
+          "package_name": "com.example.dateapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1058590959649-t37a204j255a97tume6sm49pdll3hvl8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCAsJ3bFusP-72bBAInco011Nug8wmviWY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1058590959649-t37a204j255a97tume6sm49pdll3hvl8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

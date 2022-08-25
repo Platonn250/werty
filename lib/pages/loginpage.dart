@@ -1,13 +1,16 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:dateapp/pages/choose_a_t_page.dart';
+import 'package:dateapp/pages/home.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Loginpage extends StatefulWidget {
   final VoidCallback showRegisterPage;
-  const Loginpage({
+
+  Loginpage({
     Key? key,
     required this.showRegisterPage,
   }) : super(key: key);
@@ -18,7 +21,32 @@ class Loginpage extends StatefulWidget {
   State<Loginpage> createState() => _LoginpageState();
 }
 
+void loggin() {}
+
 class _LoginpageState extends State<Loginpage> {
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
+  final _auth = FirebaseAuth.instance;
+
+  Future login() async {
+    try {
+      await _auth.signInWithEmailAndPassword(
+          email: _emailController.text.trim(),
+          password: _passwordController.text);
+      Navigator.pushNamed(context, HomeView().id);
+      print(_auth.currentUser!.email);
+    } catch (e) {
+      print('e');
+    }
+  }
+
+  @override
+  void dispose() {
+    _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -71,6 +99,7 @@ class _LoginpageState extends State<Loginpage> {
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 8),
                   child: TextField(
+                    controller: _emailController,
                     decoration: InputDecoration(
                       hintText: "Email",
                       prefixIcon: Icon(Icons.mail),
@@ -94,6 +123,7 @@ class _LoginpageState extends State<Loginpage> {
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 8),
                   child: TextField(
+                    controller: _passwordController,
                     decoration: InputDecoration(
                       hintText: "Password",
                       prefixIcon: Icon(Icons.lock),
@@ -109,6 +139,7 @@ class _LoginpageState extends State<Loginpage> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 25),
               child: GestureDetector(
+                onTap: login,
                 child: Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
