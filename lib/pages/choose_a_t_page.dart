@@ -4,9 +4,23 @@ import 'package:dateapp/pages/categories.dart';
 import 'package:dateapp/pages/home.dart';
 import 'package:flutter/material.dart';
 
-class AccountType extends StatelessWidget {
-  const AccountType({Key? key}) : super(key: key);
+class AccountType extends StatefulWidget {
   final id = 'accounttype';
+
+  AccountType({Key? key}) : super(key: key);
+
+  @override
+  State<AccountType> createState() => _AccountTypeState();
+}
+
+class _AccountTypeState extends State<AccountType> {
+  bool isSelected = false;
+
+  void selectType() {
+    setState(() {
+      isSelected = !isSelected;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -49,67 +63,77 @@ class AccountType extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Container(
-                width: 169,
-                height: 105,
-                decoration: BoxDecoration(
-                  color: Colors.grey[300],
-                  boxShadow: [
-                    BoxShadow(
-                      color: Color.fromRGBO(46, 80, 112, 1),
-                      offset: Offset(4.0, 4.0),
-                      blurRadius: 15,
-                      spreadRadius: 1,
-                    ),
-                    BoxShadow(
-                      color: Color.fromARGB(255, 255, 255, 255),
-                      offset: Offset(-4.0, -4.0),
-                      blurRadius: 15,
-                      spreadRadius: 1,
-                    ),
-                  ],
-                  // color: Colors.grey,
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                child: Center(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Image.asset('lib/images/user.jpg'),
-                      Text('User')
+              GestureDetector(
+                onTap: selectType,
+                child: Container(
+                  width: 169,
+                  height: 105,
+                  decoration: BoxDecoration(
+                    color: isSelected
+                        ? Color.fromRGBO(46, 80, 112, 1)
+                        : Colors.grey[300],
+                    boxShadow: [
+                      BoxShadow(
+                        color: Color.fromRGBO(46, 80, 112, 1),
+                        offset: Offset(4.0, 4.0),
+                        blurRadius: 15,
+                        spreadRadius: 1,
+                      ),
+                      BoxShadow(
+                        color: Color.fromARGB(255, 255, 255, 255),
+                        offset: Offset(-4.0, -4.0),
+                        blurRadius: 15,
+                        spreadRadius: 1,
+                      ),
                     ],
+                    // color: Colors.grey,
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image.asset('lib/images/user.jpg'),
+                        Text('User')
+                      ],
+                    ),
                   ),
                 ),
               ),
-              Container(
-                width: 169,
-                height: 105,
-                decoration: BoxDecoration(
-                  color: Colors.grey[300],
-                  boxShadow: [
-                    BoxShadow(
-                      color: Color.fromRGBO(46, 80, 112, 1),
-                      offset: Offset(4.0, 4.0),
-                      blurRadius: 15,
-                      spreadRadius: 1,
-                    ),
-                    BoxShadow(
-                      color: Color.fromARGB(255, 255, 255, 255),
-                      offset: Offset(-4.0, -4.0),
-                      blurRadius: 15,
-                      spreadRadius: 1,
-                    ),
-                  ],
-                  // color: Colors.grey,
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                child: Center(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Image.asset('lib/images/bus.jpg'),
-                      Text('Business')
+              GestureDetector(
+                onTap: selectType,
+                child: Container(
+                  width: 169,
+                  height: 105,
+                  decoration: BoxDecoration(
+                    color: isSelected
+                        ? Color.fromRGBO(46, 80, 112, 1)
+                        : Colors.grey[300],
+                    boxShadow: [
+                      BoxShadow(
+                        color: Color.fromRGBO(46, 80, 112, 1),
+                        offset: Offset(4.0, 4.0),
+                        blurRadius: 15,
+                        spreadRadius: 1,
+                      ),
+                      BoxShadow(
+                        color: Color.fromARGB(255, 255, 255, 255),
+                        offset: Offset(-4.0, -4.0),
+                        blurRadius: 15,
+                        spreadRadius: 1,
+                      ),
                     ],
+                    // color: Colors.grey,
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image.asset('lib/images/bus.jpg'),
+                        Text('Business')
+                      ],
+                    ),
                   ),
                 ),
               ),

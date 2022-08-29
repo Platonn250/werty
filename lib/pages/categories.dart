@@ -24,6 +24,7 @@ class _CategoriesPageState extends State<CategoriesPage> {
       'Hosts',
       'Other',
     ];
+    final selecetedTitles = [];
 
     return Scaffold(
       appBar: AppBar(
@@ -87,9 +88,13 @@ class _CategoriesPageState extends State<CategoriesPage> {
                     child: Padding(
                       padding: const EdgeInsets.symmetric(vertical: 5),
                       child: Container(
-                        // color: isSlected ? Color.fromRGBO(8, 43, 55, 1) : null,
+                        color: isSlected ? Color.fromRGBO(8, 43, 55, 1) : null,
                         child: GestureDetector(
-                          onTap: () {},
+                          onTap: () {
+                            setState(() {
+                              isSlected = !isSlected;
+                            });
+                          },
                           child: ListTile(
                             leading: CircleAvatar(
                               backgroundColor: Color.fromRGBO(46, 80, 112, 1),

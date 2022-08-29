@@ -33,7 +33,8 @@ class _RegisterPageState extends State<RegisterPage> {
           email: _emailController.text.trim(),
           password: _passwordController.text.trim());
       addToDb();
-      Navigator.pushNamed(context, HomeView().id);
+      Navigator.pushNamed(context, AccountType().id);
+      // Navigator.pushNamed(context, HomeView().id);
     } catch (e) {
       print(e.toString());
     }
@@ -297,7 +298,6 @@ class _RegisterPageState extends State<RegisterPage> {
                   // Navigator.push(context, MaterialPageRoute(builder: (context) {
                   //   return HomeView();
                   // }));
-                  Navigator.pushNamed(context, AccountType().id);
                 }),
                 child: GestureDetector(
                   onTap: signUp,

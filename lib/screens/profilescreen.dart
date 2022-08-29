@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
 
@@ -7,10 +7,17 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Center(
-        child: Text("Profile"),
-      ),
-    );
+    return Center(
+        child: Container(
+            height: 100,
+            width: 100,
+            child: Column(
+              children: [
+                CircleAvatar(
+                  radius: 30,
+                ),
+                Text("Profile"),
+              ],
+            )));
   }
 }
