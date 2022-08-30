@@ -7,6 +7,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class Loginpage extends StatefulWidget {
   final VoidCallback showRegisterPage;
@@ -65,12 +66,14 @@ class _LoginpageState extends State<Loginpage> {
               flexibleSpace: Container(
                 decoration: BoxDecoration(
                   image: DecorationImage(
-                    image: AssetImage('lib/images/bar.jpg'),
+                    image: AssetImage(
+                      'lib/images/bar.jpg',
+                    ),
                     fit: BoxFit.fill,
                   ),
                 ),
               ),
-              toolbarHeight: 200,
+              toolbarHeight: 373.h,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(40),
               ),
@@ -79,16 +82,16 @@ class _LoginpageState extends State<Loginpage> {
               child: Column(
                 children: [
                   SizedBox(
-                    height: 20,
+                    height: 15.h,
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 25),
                     child: Align(
-                      alignment: Alignment.bottomLeft,
+                      alignment: Alignment.center,
                       child: Text(
                         "Login",
-                        style: GoogleFonts.bebasNeue(
-                            fontSize: 48, fontWeight: FontWeight.w700),
+                        style: GoogleFonts.roboto(
+                            fontSize: 26.sp, fontWeight: FontWeight.w700),
                         // style: TextStyle(
                         //   fontSize: 48,
                         //   fontWeight: FontWeight.w700,
@@ -97,7 +100,7 @@ class _LoginpageState extends State<Loginpage> {
                     ),
                   ),
                   SizedBox(
-                    height: 20,
+                    height: 15.h,
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 25),
@@ -106,9 +109,10 @@ class _LoginpageState extends State<Loginpage> {
                         borderRadius: BorderRadius.circular(10),
                         color: Color.fromRGBO(242, 237, 237, 1),
                       ),
-                      height: 49,
+                      height: 49.h,
+                      width: 350.w,
                       child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 8),
+                        padding: EdgeInsets.symmetric(horizontal: 8.h),
                         child: TextField(
                           controller: _emailController,
                           decoration: InputDecoration(
@@ -121,19 +125,21 @@ class _LoginpageState extends State<Loginpage> {
                     ),
                   ),
                   SizedBox(
-                    height: 20,
+                    height: 20.h,
                   ),
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 25),
+                    padding: EdgeInsets.symmetric(horizontal: 25.w),
                     child: Container(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
                         color: Color.fromRGBO(242, 237, 237, 1),
                       ),
-                      height: 49,
+                      height: 49.h,
+                      width: 350.w,
                       child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 8),
+                        padding: EdgeInsets.symmetric(horizontal: 8.w),
                         child: TextField(
+                          obscureText: true,
                           controller: _passwordController,
                           decoration: InputDecoration(
                             hintText: "Password",
@@ -145,10 +151,10 @@ class _LoginpageState extends State<Loginpage> {
                     ),
                   ),
                   SizedBox(
-                    height: 20,
+                    height: 20.h,
                   ),
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 25),
+                    padding: EdgeInsets.symmetric(horizontal: 25.w),
                     child: GestureDetector(
                       onTap: login,
                       child: Container(
@@ -156,16 +162,16 @@ class _LoginpageState extends State<Loginpage> {
                           borderRadius: BorderRadius.circular(10),
                           color: Color.fromRGBO(46, 80, 112, 1),
                         ),
-                        height: 49,
-                        width: MediaQuery.of(context).size.width,
+                        height: 49.h,
+                        width: 350.w,
                         child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 8),
+                          padding: EdgeInsets.symmetric(horizontal: 8.w),
                           child: Center(
                             child: Text(
                               "Login",
                               style: TextStyle(
                                   color: Colors.white,
-                                  fontSize: 18,
+                                  fontSize: 18.sp,
                                   fontWeight: FontWeight.w500),
                             ),
                           ),
@@ -174,7 +180,7 @@ class _LoginpageState extends State<Loginpage> {
                     ),
                   ),
                   SizedBox(
-                    height: 20,
+                    height: 20.h,
                   ),
                   // TextButton(
                   //   onPressed: () {},
@@ -182,27 +188,21 @@ class _LoginpageState extends State<Loginpage> {
                   // ),
                   Text('Or login with'),
                   SizedBox(
-                    height: 20,
+                    height: 20.h,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       Container(
-                        height: 52,
-                        width: 82,
+                        height: 52.h,
+                        width: 85.w,
                         decoration: BoxDecoration(
-                          color: Colors.grey[300],
+                          color: Colors.white,
                           boxShadow: [
                             BoxShadow(
-                              color: Color.fromRGBO(46, 80, 112, 1),
+                              color: Color.fromARGB(255, 215, 215, 215),
                               offset: Offset(4.0, 4.0),
-                              blurRadius: 15,
-                              spreadRadius: 1,
-                            ),
-                            BoxShadow(
-                              color: Color.fromARGB(255, 255, 255, 255),
-                              offset: Offset(-4.0, -4.0),
-                              blurRadius: 15,
+                              blurRadius: 12,
                               spreadRadius: 1,
                             ),
                           ],
@@ -212,21 +212,15 @@ class _LoginpageState extends State<Loginpage> {
                         child: Image.asset("lib/images/g.jpg"),
                       ),
                       Container(
-                        height: 52,
-                        width: 82,
+                        height: 52.h,
+                        width: 85.w,
                         decoration: BoxDecoration(
-                          color: Colors.grey[300],
+                          color: Colors.white,
                           boxShadow: [
                             BoxShadow(
-                              color: Color.fromRGBO(46, 80, 112, 1),
+                              color: Color.fromARGB(255, 215, 215, 215),
                               offset: Offset(4.0, 4.0),
-                              blurRadius: 15,
-                              spreadRadius: 1,
-                            ),
-                            BoxShadow(
-                              color: Color.fromARGB(255, 255, 255, 255),
-                              offset: Offset(-4.0, -4.0),
-                              blurRadius: 15,
+                              blurRadius: 12,
                               spreadRadius: 1,
                             ),
                           ],
@@ -236,22 +230,16 @@ class _LoginpageState extends State<Loginpage> {
                         child: Image.asset("lib/images/f.jpg"),
                       ),
                       Container(
-                        height: 52,
-                        width: 82,
+                        height: 52.h,
+                        width: 85.w,
                         decoration: BoxDecoration(
-                          color: Colors.grey[100],
+                          color: Colors.white,
                           boxShadow: [
                             BoxShadow(
-                              color: Color.fromARGB(255, 95, 126, 154),
+                              color: Color.fromARGB(255, 215, 215, 215),
                               offset: Offset(4.0, 4.0),
-                              blurRadius: 10,
+                              blurRadius: 12,
                               spreadRadius: 1,
-                            ),
-                            BoxShadow(
-                              color: Color.fromARGB(255, 95, 126, 154),
-                              offset: Offset(-4.0, -4.0),
-                              blurRadius: 10,
-                              spreadRadius: 0.3,
                             ),
                           ],
                           // color: Colors.grey,
@@ -262,7 +250,7 @@ class _LoginpageState extends State<Loginpage> {
                     ],
                   ),
                   SizedBox(
-                    height: 20,
+                    height: 20.h,
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 25),
@@ -273,7 +261,7 @@ class _LoginpageState extends State<Loginpage> {
                         GestureDetector(
                           onTap: widget.showRegisterPage,
                           child: Text(
-                            " Register here",
+                            " Register",
                             style: TextStyle(
                               color: Colors.blue[900],
                               fontWeight: FontWeight.bold,
@@ -282,7 +270,10 @@ class _LoginpageState extends State<Loginpage> {
                         ),
                       ],
                     ),
-                  )
+                  ),
+                  SizedBox(
+                    height: 20.h,
+                  ),
                 ],
               ),
             ),

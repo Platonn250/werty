@@ -12,6 +12,7 @@ import 'package:dateapp/screens/chatscreen.dart';
 import 'package:dateapp/screens/orderscreen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -27,24 +28,28 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      routes: {
-        ChatScreen().id: (context) => ChatScreen(),
-        OrderScreen().id: (context) => OrderScreen(),
-        Loginpage(showRegisterPage: () {}).id: (context) =>
-            Loginpage(showRegisterPage: () {}),
-        RegisterPage(
-          showLoginPage: () {},
-        ).id: (context) => RegisterPage(showLoginPage: () {}),
-        AccountType().id: (context) => AccountType(),
-        CategoriesPage().id: (context) => CategoriesPage(),
-        BusinessType().id: (context) => BusinessType(),
-        HomeView().id: (context) => HomeView(),
+    return ScreenUtilInit(
+        designSize: Size(414, 896),
+        builder: (context, child) {
+          return MaterialApp(
+            debugShowCheckedModeBanner: false,
+            routes: {
+              ChatScreen().id: (context) => ChatScreen(),
+              OrderScreen().id: (context) => OrderScreen(),
+              Loginpage(showRegisterPage: () {}).id: (context) =>
+                  Loginpage(showRegisterPage: () {}),
+              RegisterPage(
+                showLoginPage: () {},
+              ).id: (context) => RegisterPage(showLoginPage: () {}),
+              AccountType().id: (context) => AccountType(),
+              CategoriesPage().id: (context) => CategoriesPage(),
+              BusinessType().id: (context) => BusinessType(),
+              HomeView().id: (context) => HomeView(),
 
-        // '/': (context) => HomePage(),
-      },
-      home: HomePage(),
-    );
+              // '/': (context) => HomePage(),
+            },
+            home: HomePage(),
+          );
+        });
   }
 }

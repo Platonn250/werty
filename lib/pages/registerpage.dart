@@ -6,6 +6,7 @@ import 'package:dateapp/pages/choose_a_t_page.dart';
 import 'package:dateapp/pages/home.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class RegisterPage extends StatefulWidget {
   final VoidCallback showLoginPage;
@@ -90,7 +91,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   ),
                 ),
               ),
-              toolbarHeight: 100,
+              toolbarHeight: 261.h,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(40),
               ),
@@ -99,43 +100,37 @@ class _RegisterPageState extends State<RegisterPage> {
               child: Column(
                 children: [
                   SizedBox(
-                    height: 20,
+                    height: 15.h,
                   ),
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 25),
+                    padding: EdgeInsets.symmetric(horizontal: 25.w),
                     child: Align(
-                      alignment: Alignment.bottomLeft,
+                      alignment: Alignment.center,
                       child: Text(
                         "Sign Up",
                         style: TextStyle(
-                          fontSize: 48,
+                          fontSize: 26.sp,
                           fontWeight: FontWeight.w700,
                         ),
                       ),
                     ),
                   ),
                   SizedBox(
-                    height: 20,
+                    height: 15.h,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       Container(
-                        height: 52,
-                        width: 82,
+                        height: 52.h,
+                        width: 85.w,
                         decoration: BoxDecoration(
-                          color: Colors.grey[300],
+                          color: Colors.white,
                           boxShadow: [
                             BoxShadow(
-                              color: Color.fromRGBO(46, 80, 112, 1),
+                              color: Color.fromARGB(255, 215, 215, 215),
                               offset: Offset(4.0, 4.0),
-                              blurRadius: 15,
-                              spreadRadius: 1,
-                            ),
-                            BoxShadow(
-                              color: Color.fromARGB(255, 255, 255, 255),
-                              offset: Offset(-4.0, -4.0),
-                              blurRadius: 15,
+                              blurRadius: 12,
                               spreadRadius: 1,
                             ),
                           ],
@@ -145,21 +140,15 @@ class _RegisterPageState extends State<RegisterPage> {
                         child: Image.asset("lib/images/g.jpg"),
                       ),
                       Container(
-                        height: 52,
-                        width: 82,
+                        height: 52.h,
+                        width: 82.w,
                         decoration: BoxDecoration(
-                          color: Colors.grey[300],
+                          color: Colors.white,
                           boxShadow: [
                             BoxShadow(
-                              color: Color.fromRGBO(46, 80, 112, 1),
+                              color: Color.fromARGB(255, 215, 215, 215),
                               offset: Offset(4.0, 4.0),
-                              blurRadius: 15,
-                              spreadRadius: 1,
-                            ),
-                            BoxShadow(
-                              color: Color.fromARGB(255, 255, 255, 255),
-                              offset: Offset(-4.0, -4.0),
-                              blurRadius: 15,
+                              blurRadius: 12,
                               spreadRadius: 1,
                             ),
                           ],
@@ -169,23 +158,17 @@ class _RegisterPageState extends State<RegisterPage> {
                         child: Image.asset("lib/images/f.jpg"),
                       ),
                       Container(
-                        height: 52,
-                        width: 82,
+                        height: 52.h,
+                        width: 82.w,
                         decoration: BoxDecoration(
-                          color: Colors.grey[100],
+                          color: Colors.white,
                           // ignore: prefer_const_literals_to_create_immutables
                           boxShadow: [
                             BoxShadow(
-                              color: Color.fromARGB(255, 95, 126, 154),
+                              color: Color.fromARGB(255, 215, 215, 215),
                               offset: Offset(4.0, 4.0),
-                              blurRadius: 10,
+                              blurRadius: 12,
                               spreadRadius: 1,
-                            ),
-                            BoxShadow(
-                              color: Color.fromARGB(255, 95, 126, 154),
-                              offset: Offset(-4.0, -4.0),
-                              blurRadius: 10,
-                              spreadRadius: 0.3,
                             ),
                           ],
                           // color: Colors.grey,
@@ -196,14 +179,14 @@ class _RegisterPageState extends State<RegisterPage> {
                     ],
                   ),
                   SizedBox(
-                    height: 20,
+                    height: 20.h,
                   ),
-                  TextButton(
-                    onPressed: () {},
-                    child: Text("Or Sign Up with Email"),
+                  Text(
+                    "Or, with email",
+                    style: TextStyle(fontSize: 14.sp),
                   ),
                   SizedBox(
-                    height: 20,
+                    height: 20.h,
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 25),
@@ -212,13 +195,15 @@ class _RegisterPageState extends State<RegisterPage> {
                         borderRadius: BorderRadius.circular(10),
                         color: Color.fromRGBO(242, 237, 237, 1),
                       ),
-                      height: 49,
+                      height: 49.h,
+                      width: 350.w,
                       child: Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 8),
                         child: TextField(
                           controller: _emailController,
                           decoration: InputDecoration(
                             hintText: "Email",
+                            hintStyle: TextStyle(fontSize: 14.sp),
                             prefixIcon: Icon(Icons.mail),
                             border: InputBorder.none,
                           ),
@@ -227,22 +212,51 @@ class _RegisterPageState extends State<RegisterPage> {
                     ),
                   ),
                   SizedBox(
-                    height: 20,
+                    height: 20.h,
                   ),
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 25),
+                    padding: EdgeInsets.symmetric(horizontal: 25.w),
                     child: Container(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
                         color: Color.fromRGBO(242, 237, 237, 1),
                       ),
-                      height: 49,
+                      height: 49.h,
+                      width: 350.w,
                       child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 8),
+                        padding: EdgeInsets.symmetric(horizontal: 8.w),
                         child: TextField(
                           controller: _nameController,
                           decoration: InputDecoration(
                             hintText: "Username",
+                            hintStyle: TextStyle(fontSize: 14.sp),
+                            prefixIcon: Icon(Icons.person),
+                            border: InputBorder.none,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 20.h,
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 25.w),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: Color.fromRGBO(242, 237, 237, 1),
+                      ),
+                      height: 49.h,
+                      width: 350.w,
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 8.w),
+                        child: TextField(
+                          obscureText: true,
+                          controller: _passwordController,
+                          decoration: InputDecoration(
+                            hintText: "Password",
+                            hintStyle: TextStyle(fontSize: 14.sp),
                             prefixIcon: Icon(Icons.lock),
                             border: InputBorder.none,
                           ),
@@ -251,7 +265,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     ),
                   ),
                   SizedBox(
-                    height: 20,
+                    height: 20.h,
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 25),
@@ -260,38 +274,17 @@ class _RegisterPageState extends State<RegisterPage> {
                         borderRadius: BorderRadius.circular(10),
                         color: Color.fromRGBO(242, 237, 237, 1),
                       ),
-                      height: 49,
+                      height: 49.h,
+                      width: 350.w,
                       child: Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 8),
                         child: TextField(
-                          controller: _passwordController,
-                          decoration: InputDecoration(
-                            hintText: "Password",
-                            prefixIcon: Icon(Icons.mail),
-                            border: InputBorder.none,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 25),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: Color.fromRGBO(242, 237, 237, 1),
-                      ),
-                      height: 49,
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 8),
-                        child: TextField(
+                          obscureText: true,
                           controller: _comfirmPassController,
                           decoration: InputDecoration(
                             hintText: "Comfirm Pasword",
-                            prefixIcon: Icon(Icons.mail),
+                            hintStyle: TextStyle(fontSize: 14.sp),
+                            prefixIcon: Icon(Icons.lock),
                             border: InputBorder.none,
                           ),
                         ),
@@ -299,7 +292,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     ),
                   ),
                   SizedBox(
-                    height: 20,
+                    height: 20.h,
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 25),
@@ -316,16 +309,16 @@ class _RegisterPageState extends State<RegisterPage> {
                             borderRadius: BorderRadius.circular(10),
                             color: Color.fromRGBO(46, 80, 112, 1),
                           ),
-                          height: 49,
-                          width: MediaQuery.of(context).size.width,
+                          height: 49.h,
+                          width: 350.w,
                           child: Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 8),
+                            padding: EdgeInsets.symmetric(horizontal: 8.h),
                             child: Center(
                               child: Text(
-                                "Register",
+                                "Sign up",
                                 style: TextStyle(
                                     color: Colors.white,
-                                    fontSize: 18,
+                                    fontSize: 18.sp,
                                     fontWeight: FontWeight.w500),
                               ),
                             ),
@@ -337,22 +330,23 @@ class _RegisterPageState extends State<RegisterPage> {
                   SizedBox(
                     height: 20,
                   ),
-                  SizedBox(
-                    height: 20,
-                  ),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 25),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text("Already have an Acount? "),
+                        Text(
+                          "Already have an Acount? ",
+                          style: TextStyle(fontSize: 14.sp),
+                        ),
                         GestureDetector(
                           onTap: widget.showLoginPage,
                           child: Text(
-                            " Login here",
+                            " Login",
                             style: TextStyle(
                               color: Colors.blue[900],
                               fontWeight: FontWeight.bold,
+                              fontSize: 14.sp,
                             ),
                           ),
                         ),
@@ -360,7 +354,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     ),
                   ),
                   SizedBox(
-                    height: 20,
+                    height: 20.h,
                   )
                 ],
               ),

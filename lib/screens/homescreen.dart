@@ -2,6 +2,7 @@
 
 import 'package:dateapp/constants/constwidgets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -35,7 +36,7 @@ class HomeScreen extends StatelessWidget {
       child: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
+            padding: EdgeInsets.symmetric(horizontal: 10.w),
             child: Container(
               height: 72,
               // color: Colors.blue,
@@ -54,7 +55,7 @@ class HomeScreen extends StatelessWidget {
                         "NY City, st 398",
                         style: TextStyle(
                           color: Color.fromRGBO(0, 0, 0, 0.6),
-                          fontSize: 20,
+                          fontSize: 20.sp,
                           fontWeight: FontWeight.w500,
                         ),
                       )
@@ -66,12 +67,12 @@ class HomeScreen extends StatelessWidget {
             ),
           ),
           SizedBox(
-            height: 10,
+            height: 10.h,
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10),
             child: Container(
-              height: 58,
+              height: 58.h,
               decoration: BoxDecoration(
                 color: Color.fromRGBO(229, 229, 229, 1),
                 borderRadius: BorderRadius.circular(15),
@@ -85,7 +86,7 @@ class HomeScreen extends StatelessWidget {
                       prefixIcon: Icon(Icons.search),
                       hintText: 'Search',
                       hintStyle: TextStyle(
-                        fontSize: 20,
+                        fontSize: 20.sp,
                         color: Color.fromRGBO(0, 0, 0, 0.6),
                         fontWeight: FontWeight.w500,
                       ),
@@ -213,6 +214,34 @@ class HomeScreen extends StatelessWidget {
                   height: 10,
                 ),
                 Expanded(
+                  // child: GridView.count(
+                  //   crossAxisCount: 2,
+                  //   children: [
+                  //     Padding(
+                  //       padding: const EdgeInsets.all(8.0),
+                  //       child: Container(
+                  //         // height: 200,
+                  //         // width: 200,
+                  //         color: Colors.deepPurple,
+                  //         child: Column(
+                  //           children: [
+                  //             ClipRRect(
+                  //               borderRadius: BorderRadius.circular(12),
+                  //               child: Container(
+                  //                 height: 120,
+                  //                 width: 110,
+                  //                 child: Image.network(
+                  //                   foodImages[0],
+                  //                   fit: BoxFit.fill,
+                  //                 ),
+                  //               ),
+                  //             ),
+                  //           ],
+                  //         ),
+                  //       ),
+                  //     ),
+                  //   ],
+                  // ),
                   child: ListView.builder(
                       scrollDirection: Axis.horizontal,
                       itemCount: 3,

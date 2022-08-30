@@ -2,6 +2,7 @@
 
 import 'package:dateapp/pages/businesstyppage.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 bool isSlected = false;
 
@@ -14,6 +15,7 @@ class CategoriesPage extends StatefulWidget {
 }
 
 class _CategoriesPageState extends State<CategoriesPage> {
+  int select = 0;
   @override
   Widget build(BuildContext context) {
     final titles = [
@@ -24,7 +26,6 @@ class _CategoriesPageState extends State<CategoriesPage> {
       'Hosts',
       'Other',
     ];
-    final selecetedTitles = [];
 
     return Scaffold(
       appBar: AppBar(
@@ -36,7 +37,7 @@ class _CategoriesPageState extends State<CategoriesPage> {
             ),
           ),
         ),
-        toolbarHeight: 200,
+        toolbarHeight: 200.h,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(40),
         ),
@@ -44,7 +45,7 @@ class _CategoriesPageState extends State<CategoriesPage> {
       body: Column(
         children: [
           SizedBox(
-            height: 20,
+            height: 20.h,
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 25),
@@ -60,7 +61,7 @@ class _CategoriesPageState extends State<CategoriesPage> {
             ),
           ),
           SizedBox(
-            height: 20,
+            height: 20.h,
           ),
 
           // ListTile(
@@ -87,28 +88,45 @@ class _CategoriesPageState extends State<CategoriesPage> {
                   return GestureDetector(
                     child: Padding(
                       padding: const EdgeInsets.symmetric(vertical: 5),
-                      child: Container(
-                        color: isSlected ? Color.fromRGBO(8, 43, 55, 1) : null,
-                        child: GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              isSlected = !isSlected;
-                            });
-                          },
-                          child: ListTile(
-                            leading: CircleAvatar(
-                              backgroundColor: Color.fromRGBO(46, 80, 112, 1),
-                              radius: 10,
-                            ),
-                            title: Text(
-                              titles[index],
-                              style: TextStyle(
-                                fontSize: 24,
-                                color: Color.fromRGBO(46, 80, 112, 1),
-                                fontWeight: FontWeight.w700,
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 20.w),
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: select == index
+                                ? Color.fromRGBO(8, 43, 55, 1)
+                                : Colors.white,
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          child: GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                select = index;
+                              });
+                            },
+                            child: ListTile(
+                              leading: CircleAvatar(
+                                backgroundColor: select == index
+                                    ? Colors.white
+                                    : Color.fromRGBO(46, 80, 112, 1),
+                                radius: 10,
                               ),
+                              title: Text(
+                                titles[index],
+                                style: TextStyle(
+                                  fontSize: 24.sp,
+                                  color: select == index
+                                      ? Colors.white
+                                      : Color.fromRGBO(46, 80, 112, 1),
+                                  fontWeight: FontWeight.w700,
+                                ),
+                              ),
+                              trailing: select == index
+                                  ? Icon(
+                                      Icons.check,
+                                      color: Colors.white,
+                                    )
+                                  : null,
                             ),
-                            trailing: Icon(Icons.verified),
                           ),
                         ),
                       ),
@@ -119,11 +137,9 @@ class _CategoriesPageState extends State<CategoriesPage> {
             ),
           ),
           SizedBox(
-            height: 20,
+            height: 20.h,
           ),
-          SizedBox(
-            height: 20,
-          ),
+
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 25),
             child: GestureDetector(
@@ -140,7 +156,7 @@ class _CategoriesPageState extends State<CategoriesPage> {
                     borderRadius: BorderRadius.circular(10),
                     color: Color.fromRGBO(46, 80, 112, 1),
                   ),
-                  height: 49,
+                  height: 49.h,
                   width: MediaQuery.of(context).size.width,
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 8),
@@ -149,7 +165,7 @@ class _CategoriesPageState extends State<CategoriesPage> {
                         "Continue",
                         style: TextStyle(
                             color: Colors.white,
-                            fontSize: 18,
+                            fontSize: 18.sp,
                             fontWeight: FontWeight.w500),
                       ),
                     ),

@@ -3,6 +3,7 @@
 import 'package:dateapp/pages/categories.dart';
 import 'package:dateapp/pages/home.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AccountType extends StatefulWidget {
   final id = 'accounttype';
@@ -16,11 +17,17 @@ class AccountType extends StatefulWidget {
 class _AccountTypeState extends State<AccountType> {
   bool isSelected = false;
 
-  void selectType() {
-    setState(() {
-      isSelected = !isSelected;
-    });
-  }
+  final images = [
+    'lib/images/bus.jpg',
+    'lib/images/user.jpg',
+  ];
+
+  final types = [
+    'Business',
+    'user',
+  ];
+
+  int select = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -60,142 +67,116 @@ class _AccountTypeState extends State<AccountType> {
           SizedBox(
             height: 20,
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              GestureDetector(
-                onTap: selectType,
-                child: Container(
-                  width: 169,
-                  height: 105,
-                  decoration: BoxDecoration(
-                    color: isSelected
-                        ? Color.fromRGBO(46, 80, 112, 1)
-                        : Colors.grey[300],
-                    boxShadow: [
-                      BoxShadow(
-                        color: Color.fromRGBO(46, 80, 112, 1),
-                        offset: Offset(4.0, 4.0),
-                        blurRadius: 15,
-                        spreadRadius: 1,
+          Expanded(
+            flex: 1,
+            child: ListView.builder(
+                itemCount: 2,
+                scrollDirection: Axis.horizontal,
+                itemBuilder: (context, index) {
+                  return GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        select = index;
+                      });
+                    },
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 20),
+                      child: Container(
+                        width: 169.h,
+                        height: 105.w,
+                        decoration: BoxDecoration(
+                          color: select == index
+                              ? Color.fromRGBO(46, 80, 112, 1)
+                              : Colors.white,
+                          boxShadow: [
+                            BoxShadow(
+                              color: Color.fromARGB(255, 215, 215, 215),
+                              offset: Offset(4.0, 4.0),
+                              blurRadius: 12,
+                              spreadRadius: 1,
+                            ),
+                          ],
+                          // color: Colors.grey,
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        child: Center(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Image.asset(images[index]),
+                              Text(types[index])
+                            ],
+                          ),
+                        ),
                       ),
-                      BoxShadow(
-                        color: Color.fromARGB(255, 255, 255, 255),
-                        offset: Offset(-4.0, -4.0),
-                        blurRadius: 15,
-                        spreadRadius: 1,
-                      ),
-                    ],
-                    // color: Colors.grey,
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  child: Center(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Image.asset('lib/images/user.jpg'),
-                        Text('User')
-                      ],
                     ),
-                  ),
-                ),
-              ),
-              GestureDetector(
-                onTap: selectType,
-                child: Container(
-                  width: 169,
-                  height: 105,
-                  decoration: BoxDecoration(
-                    color: isSelected
-                        ? Color.fromRGBO(46, 80, 112, 1)
-                        : Colors.grey[300],
-                    boxShadow: [
-                      BoxShadow(
-                        color: Color.fromRGBO(46, 80, 112, 1),
-                        offset: Offset(4.0, 4.0),
-                        blurRadius: 15,
-                        spreadRadius: 1,
-                      ),
-                      BoxShadow(
-                        color: Color.fromARGB(255, 255, 255, 255),
-                        offset: Offset(-4.0, -4.0),
-                        blurRadius: 15,
-                        spreadRadius: 1,
-                      ),
-                    ],
-                    // color: Colors.grey,
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  child: Center(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Image.asset('lib/images/bus.jpg'),
-                        Text('Business')
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-            ],
+                  );
+                }),
           ),
           SizedBox(
             height: 20,
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 25),
-            child: Align(
-              alignment: Alignment.bottomLeft,
-              child: Text(
-                "Choosing business this means that you will be able to do business in your current location by selling or providing services and make money.",
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.w700,
-                ),
-              ),
-            ),
-          ),
-          SizedBox(
-            height: 20,
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 25),
-            child: GestureDetector(
-              onTap: (() {
-                Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return AccountType();
-                }));
-              }),
-              child: GestureDetector(
-                onTap: () {
-                  // Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  //   return HomeView();
-                  // }));
-                  Navigator.pushNamed(context, CategoriesPage().id);
-                },
-                child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: Color.fromRGBO(46, 80, 112, 1),
-                  ),
-                  height: 49,
-                  width: MediaQuery.of(context).size.width,
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 8),
-                    child: Center(
+          Expanded(
+              flex: 2,
+              child: Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 25),
+                    child: Align(
+                      alignment: Alignment.bottomLeft,
                       child: Text(
-                        "Continue",
+                        "Choosing business this means that you will be able to do business in your current location by selling or providing services and make money.",
                         style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 18,
-                            fontWeight: FontWeight.w500),
+                          fontSize: 18,
+                          fontWeight: FontWeight.w700,
+                        ),
                       ),
                     ),
                   ),
-                ),
-              ),
-            ),
-          ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 25),
+                    child: GestureDetector(
+                      onTap: (() {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) {
+                          return AccountType();
+                        }));
+                      }),
+                      child: GestureDetector(
+                        onTap: () {
+                          // Navigator.push(context, MaterialPageRoute(builder: (context) {
+                          //   return HomeView();
+                          // }));
+                          Navigator.pushNamed(context, CategoriesPage().id);
+                        },
+                        child: Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color: Color.fromRGBO(46, 80, 112, 1),
+                          ),
+                          height: 49,
+                          width: MediaQuery.of(context).size.width,
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 8),
+                            child: Center(
+                              child: Text(
+                                "Continue",
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w500),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ))
         ],
       ),
     );

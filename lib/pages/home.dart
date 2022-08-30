@@ -80,7 +80,7 @@ class _HomeViewState extends State<HomeView> {
                           text: 'Home',
                         ),
                         IconButtonBar(
-                          icon: Icons.document_scanner,
+                          icon: Icons.calendar_month,
                           onPressed: () {
                             setState(() {
                               selectedIndex = 3;
