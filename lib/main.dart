@@ -38,9 +38,8 @@ class MyApp extends StatelessWidget {
               OrderScreen().id: (context) => OrderScreen(),
               Loginpage(showRegisterPage: () {}).id: (context) =>
                   Loginpage(showRegisterPage: () {}),
-              RegisterPage(
-                showLoginPage: () {},
-              ).id: (context) => RegisterPage(showLoginPage: () {}),
+              RegisterPage(showLoginPage: () {}).id: (context) =>
+                  RegisterPage(showLoginPage: () {}),
               AccountType().id: (context) => AccountType(),
               CategoriesPage().id: (context) => CategoriesPage(),
               BusinessType().id: (context) => BusinessType(),

@@ -70,7 +70,7 @@ class HomeScreen extends StatelessWidget {
             height: 10.h,
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
+            padding: EdgeInsets.symmetric(horizontal: 10.w),
             child: Container(
               height: 58.h,
               decoration: BoxDecoration(
@@ -79,7 +79,7 @@ class HomeScreen extends StatelessWidget {
               ),
               child: Center(
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  padding: EdgeInsets.symmetric(horizontal: 10.w),
                   child: TextField(
                     decoration: InputDecoration(
                       border: InputBorder.none,
@@ -97,16 +97,16 @@ class HomeScreen extends StatelessWidget {
             ),
           ),
           SizedBox(
-            height: 30,
+            height: 30.h,
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
+            padding: EdgeInsets.symmetric(horizontal: 10.w),
             child: Align(
               alignment: Alignment.bottomLeft,
               child: Text(
                 "Popular Categories",
                 style: TextStyle(
-                  fontSize: 20,
+                  fontSize: 20.sp,
                   fontWeight: FontWeight.w700,
                 ),
               ),
@@ -121,7 +121,7 @@ class HomeScreen extends StatelessWidget {
               itemCount: 3,
               itemBuilder: (BuildContext context, int index) {
                 return Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 6),
+                  padding:  EdgeInsets.symmetric(horizontal: 6.w),
                   child: Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(12),
