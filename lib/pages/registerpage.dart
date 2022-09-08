@@ -54,7 +54,7 @@ class _RegisterPageState extends State<RegisterPage> {
       if (_passwordController.text == _comfirmPassController.text) {
         await _database
             .collection("users")
-            .doc(_nameController.text.trim())
+            .doc(_emailController.text.trim())
             .set({
           'name': _nameController.text.trim(),
           'email': _emailController.text.trim(),
